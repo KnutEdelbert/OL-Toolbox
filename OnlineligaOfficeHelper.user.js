@@ -6,7 +6,7 @@
 // @namespace      https://greasyfork.org/de/users/577453
 // @version        0.1.0
 // @license        LGPLv3
-// @description
+// @description    Helper for office of onlineliga.*
 // @author         TobSob / KnutEdelbert
 // @match          https://www.onlineliga.de
 // @require        https://greasyfork.org/scripts/424896-olcore/code/OLCore.user.js
@@ -14,6 +14,8 @@
 // @grant          GM_setValue
 // @grant          GM_getValue
 // @grant          GM_deleteValue
+// @grant          GM_addStyle
+// @description Helper function for office of www.onlineliga.de
 // ==/UserScript==
 
 /*********************************************
@@ -85,14 +87,22 @@
         }
 
     }
-    
-    /* @author: TobSob */
-    OLCore.waitForKeyElements (
-        "div#sponsorContainer",
-        generateSponsorCalcDiv,
-    );
 
-    GM_addStyle('* .sponsor-calc-div { position: fixed; bottom:50%;right: 20px; text-decoration: none; color: #000000;background-color: rgba(235, 235, 235, 0.80);font-size: 12px;padding: 1em;} .sponsor-calc-input { width:100%; margin: 5px }');
+    function init(){
+        OLCore.waitForKeyElements (
+            "div#sponsorContainer",
+            generateSponsorCalcDiv,
+        );
 
+        GM_addStyle('* .sponsor-calc-div { position: fixed; bottom:50%;right: 20px; text-decoration: none; color: #000000;background-color: rgba(235, 235, 235, 0.80);font-size: 12px;padding: 1em;} .sponsor-calc-input { width:100%; margin: 5px }');
+    }
+
+    if (!window.OLToolboxActivated) {
+       init();
+    } else {
+        window.OnlineligaOfficeHelper = {
+            init : init
+        };
+    }
 
 })();
