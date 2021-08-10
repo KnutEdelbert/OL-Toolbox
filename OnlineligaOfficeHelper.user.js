@@ -38,8 +38,8 @@
                 var valueString = valueDict[key];
                 valueString = valueString.replace(/ |,|\.|€|CHF/g,"");
                 const value = parseInt(valueString);
-                const wins = parseInt($('#Siege').val())
-                const placement = parseInt($('#Platzierung').val())
+                const wins = parseInt($('#calcsponsor_victories').val())
+                const placement = parseInt($('#calcsponsor_placement').val())
                 if(key === "Antrittsprämie") {
                     seasonValue += value*34;
                 }
