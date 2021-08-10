@@ -1,12 +1,12 @@
 /*jshint esversion: 6, multistr: true */
 /* globals waitForKeyElements, OLCore, OnlineligaFriendlyHelper, OnlineligaTrainingsIntense,
    OnlineligaTransferHelper, OnlineligaTrainingHelper, OnlineligaNLZHelper, OnlineligaBaseHelper,
-   OnlineligaMatchdayHelper, OnlineligaLineupHelper */
+   OnlineligaMatchdayHelper, OnlineligaLineupHelper, OnlineligaOfficeHelper */
 
 // ==UserScript==
 // @name           Onlineliga Toolbox
 // @namespace      https://greasyfork.org/de/users/577453
-// @version        0.6.0
+// @version        0.6.1
 // @license        LGPLv3
 // @description    Sammlung von Tools for www.onlineliga.de (OFA)
 // @author         KnutEdelbert
@@ -23,6 +23,7 @@
 // @require        https://greasyfork.org/scripts/429614-onlineligalineuphelper/code/OnlineligaLineupHelper.user.js
 // @require        https://greasyfork.org/scripts/425709-onlineliganlzhelper/code/OnlineligaNLZHelper.user.js?011
 // @require        https://greasyfork.org/scripts/425710-onlineligabasehelper/code/OnlineligaBaseHelper.user.js
+// @require        https://greasyfork.org/scripts/426354-onlineligaofficehelper/code/OnlineligaOfficeHelper.user.js
 // @grant          GM_addStyle
 // @grant          GM_setValue
 // @grant          GM_getValue
@@ -46,6 +47,7 @@
  * 0.5.3 24.06.2021 add support for *.at and *.ch
  * 0.5.4 04.07.2021 + OnlineligaMatchdayHelper (replaces OnlineligaTopPlayer)
  * 0.6.0 21.07.2021 + OnlineligaLineupHelper
+ * 0.6.1 10.08.2021 + OnlineligaOfficeHelper
  *********************************************/
 (function(){
 
@@ -59,6 +61,7 @@
     const enableBaseHelper = true;
     const enableMatchdayHelper = true;
     const enableLineupHelper = true;
+    const enableOfficeHelper = true;
 
     if (enableFriendlyHelper && window.OnlineligaFriendlyHelper){
         OnlineligaFriendlyHelper.init();
@@ -90,6 +93,10 @@
 
     if (enableMatchdayHelper && window.OnlineligaMatchdayHelper){
         OnlineligaMatchdayHelper.init();
+    }
+
+    if (enableOfficeHelper && window.OnlineligaOfficeHelper){
+        OnlineligaOfficeHelper.init();
     }
 
 })();
